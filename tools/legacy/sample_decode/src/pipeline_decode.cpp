@@ -1864,10 +1864,12 @@ mfxStatus CDecodingPipeline::RunDecoding() {
             else {
                 msdkFrameSurface* surface = FindUsedSurface(pOutSurface);
 
-                msdk_atomic_inc16(&(surface->render_lock));
+		if (surface) {
+                    msdk_atomic_inc16(&(surface->render_lock));
 
-                m_pCurrentFreeOutputSurface->surface = surface;
-                m_OutputSurfacesPool.AddSurface(m_pCurrentFreeOutputSurface);
+                    m_pCurrentFreeOutputSurface->surface = surface;
+                    m_OutputSurfacesPool.AddSurface(m_pCurrentFreeOutputSurface);
+		}
                 m_pCurrentFreeOutputSurface = NULL;
             }
         }
