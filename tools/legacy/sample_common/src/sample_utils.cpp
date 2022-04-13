@@ -1143,6 +1143,7 @@ mfxStatus CSmplYUVWriter::WriteNextFrame(mfxFrameSurface1* pSurface) {
                     // Bits will be shifted to the lower position
                     tmp.resize(pData.Pitch);
                     MSDK_CHECK_PARSE_RESULT(tmp.size(), pInfo.CropW, MFX_ERR_INCOMPATIBLE_VIDEO_PARAM);
+                    // test
 
                     for (int idx = 0; idx < pInfo.CropW; idx++) {
                         tmp[idx] = shortPtr[idx] >> shiftSizeLuma;
