@@ -1756,6 +1756,7 @@ mfxStatus CDecodingPipeline::RunDecoding() {
                 } while (MFX_ERR_NONE == sts);
 
                 MSDK_IGNORE_MFX_STS(sts, MFX_ERR_MORE_DATA);
+                MSDK_CHECK_ERROR(sts,MFX_ERR_UNKNOWN,MFX_ERR_UNKNOWN)
                 if (sts)
                     MSDK_PRINT_WRN_MSG(sts, "SyncOutputSurface failed")
 
